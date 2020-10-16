@@ -1,0 +1,37 @@
+#!/bin/bash
+
+git clone https://github.com/mercadonanuvem/mercado
+
+echo "Informe o nome do diretorio"
+read newdir
+`mv mercado $newdir`
+
+(cd $newdir && composer install)
+
+echo "Informe a url (ex: http://localhost/)"
+read baseurl
+
+echo "Banco de Dados: Informe o host (ex: localhost)"
+read dbhost
+
+echo "Banco de Dados: Informe o nome do banco de dados"
+read dbname
+
+echo "Banco de Dados: Informe o usuario"
+read dbuser
+
+echo "Banco de Dados: Informe a senha"
+read dbpass
+
+echo "Magento Admin: Usuário"
+read adminuser
+
+echo "Magento Admin: Senha"
+read adminpass
+
+echo "Elasticsearch: Informe o host (ex: localhost)"
+read elastichost
+
+(cd $newdir && bin/magento setup:install --base-url="$baseurl"  --db-host="$dbhost" --db-name="$dbname" --db-user="$dbuser" --db-password="$dbpass" --admin-firstname="Mercado" --admin-lastname="Na Nuvem" --admin-email="mercadonanuvem@gmail.com" --admin-user="$adminuser" --admin-password="$adminpass" --language="pt_BR" --currency="BRL" --timezone="America/Sao_Paulo" --use-rewrites="1" --elasticsearch-host="$elastichost")
+
+chmod -R 777 $newdir
