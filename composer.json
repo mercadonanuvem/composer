@@ -1,0 +1,8 @@
+{
+    "name": "mercadonanuvem/magento",
+    "description": "Instalação do magento 2.4",
+    "require": {
+        "php": "^7.3",
+        "another-vendor/package": "1.*"
+    }
+}
