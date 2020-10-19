@@ -35,3 +35,8 @@ read elastichost
 (cd $newdir && bin/magento setup:install --base-url="$baseurl"  --db-host="$dbhost" --db-name="$dbname" --db-user="$dbuser" --db-password="$dbpass" --admin-firstname="Mercado" --admin-lastname="Na Nuvem" --admin-email="mercadonanuvem@gmail.com" --admin-user="$adminuser" --admin-password="$adminpass" --language="pt_BR" --currency="BRL" --timezone="America/Sao_Paulo" --use-rewrites="1" --elasticsearch-host="$elastichost")
 
 chmod -R 777 $newdir
+
+(cd $newdir && composer require rafaelstz/traducao_magento2_pt_br:dev-master)
+(cd $newdir && bin/magento setup:static-content:deploy pt_BR -f)
+(cd $newdir && bin/magento cache:clean)
+(cd $newdir && bin/magento setup:di:compile)
