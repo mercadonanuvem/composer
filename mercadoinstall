@@ -11,25 +11,25 @@ read newdir
 echo "Informe a url (ex: http://localhost/)"
 read baseurl
 
-echo "Banco de Dados: Informe o host (ex: localhost)"
+echo "Banco de Dados (existente): Informe o host (ex: localhost)"
 read dbhost
 
-echo "Banco de Dados: Informe o nome do banco de dados"
+echo "Banco de Dados (existente): Informe o nome do banco de dados"
 read dbname
 
-echo "Banco de Dados: Informe o usuario"
+echo "Banco de Dados (existente): Informe o usuario"
 read dbuser
 
-echo "Banco de Dados: Informe a senha"
+echo "Banco de Dados (existente): Informe a senha"
 read dbpass
 
-echo "Magento Admin: Usuário"
+echo "Magento Admin (criar): Usuário"
 read adminuser
 
-echo "Magento Admin: Senha"
+echo "Magento Admin (criar): Senha (mais que 6 caracteres com letra(s) e numero(s))"
 read adminpass
 
-echo "Elasticsearch: Informe o host (ex: localhost)"
+echo "Elasticsearch (existente): Informe o host (ex: localhost)"
 read elastichost
 
 (cd $newdir && bin/magento setup:install --base-url="$baseurl"  --db-host="$dbhost" --db-name="$dbname" --db-user="$dbuser" --db-password="$dbpass" --admin-firstname="Mercado" --admin-lastname="Na Nuvem" --admin-email="mercadonanuvem@gmail.com" --admin-user="$adminuser" --admin-password="$adminpass" --language="pt_BR" --currency="BRL" --timezone="America/Sao_Paulo" --use-rewrites="1" --elasticsearch-host="$elastichost")
